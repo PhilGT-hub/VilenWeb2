@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vilen Menu UI</title>
+
+<style>
+:root {
+  --bg: #0f1115;
+  --card: #171a21;
+  --accent: #1aff00;
+  --text: #e6e6e6;
+  --border: #2a2f3a;
+}
+
+* { box-sizing: border-box; font-family: "Segoe UI", Tahoma, sans-serif; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #151923, var(--bg));
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app {
+  width: 520px;
+  background: var(--card);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  padding: 16px 18px 20px;
+}
+
+.tabs { display: flex; gap: 6px; margin-bottom: 14px; }
+.tab {
+  flex: 1;
+  padding: 10px 12px;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, #161a24, #0d1017);
+  cursor: pointer;
+  color: var(--text);
+  transition: 0.15s;
+}
+.tab:hover { border-color: var(--accent); transform: translateY(-2px); }
+.tab.active { background: linear-gradient(135deg, #1aff00, #0fb800); color: #081000; border: none; font-weight: 600; }
+
+.content { background: #0b0e14; border: 1px solid var(--border); border-radius: 12px; padding: 14px; min-height: 260px; }
+.panel { display: none; }
+.panel.active { display: block; }
+
+h2 { margin: 0 0 10px; font-size: 18px; }
+.features { font-family: Consolas, monospace; font-size: 14px; line-height: 1.55; white-space: pre-line; color: #c9ffd0; }
+</style>
+</head>
+<body>
+<div class="app" id="appRoot">
+  <div class="tabs">
+    <div class="tab active" onclick="openTab('menu', this)">Menu Fetures</div>
+    <div class="tab" onclick="openTab('about', this)">About</div>
+    <div class="tab" onclick="openTab('links', this)">Links</div>
+  </div>
+
+  <div class="content">
+    <div id="menu" class="panel active">
+      <h2>🧩 Vilen Menu Features V0.0.0</h2>
+      <div class="features">
+🌍 Movement / Physics
+• 🪐 Low Gravity — ❌ Not working yet
+• 🚀 Gravity Fly — ❌ Not working yet
+• 👻 NoClip — ✅ Working
+
+🎭 Cosmetics / Item Swaps
+• 👕 V Shirt → Saija — ⚠️ Bannable
+• 💇 Shag Hair → Saija — ❌ Patched / Not working
+• 🧢 Blue Trucker Cuffs → Hockey — ⚠️ Working (maybe)
+
+🔫 Fun / Experimental
+• 🧌 Goblin → Shotgun — 🧪 Not tested / ⚠️ Maybe bannable
+• 🕺 Geek Out — ✅ Working
+      </div>
+    </div>
+
+    <div id="about" class="panel">
+      <h2>About</h2>
+      <p>Static about content.</p>
+    </div>
+
+    <div id="links" class="panel">
+      <h2>Links</h2>
+      <p>Static links content.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// Tabs functionality
+function openTab(id, el) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>
